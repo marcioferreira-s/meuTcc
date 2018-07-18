@@ -1,0 +1,94 @@
+//Import font
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,700');
+//Global
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+
+///Color
+
+.letra{
+    color : $fundo;
+}
+.purple{
+    color : $purple;
+}
+
+.orange{
+    color : $orange;
+}
+.dark{
+    color : $dark;
+}
+.snow{
+    color : $snow;
+}
+.gray{
+    color : $gray;
+}
+.gunmetal{
+    color : $gunmetal;
+}
+//Align
+.center{
+    text-align: center;
+}
+//Margin
+.no-margin{
+    margin: 0px;
+}
+.mg-top-5{
+margin-top: 5px;
+}
+.mg-top-10{
+    margin-top: 10px;
+}
+.mg-top-20{
+    margin-top: 20px;
+}
+.mg-top-30{
+    margin-top: 30px;
+}
+.mg-top-40{
+    margin-top: 40px;
+}
+.mg-top-250{
+    margin-top: 200px;
+}
+//Padding
+
+.no-padding{
+padding: 0px;
+}
+
+.padding-login{
+    padding: 260px 40px 20px 40px; 
+}
+.padding-register{
+    padding: 40px 40px 20px 40px; 
+}
+.padding-40{
+    padding: 40px;
+}
+.padding-top-5{
+    padding-top: 5px;
+    }
+.padding-top-10{
+    padding-top: 10px;
+    }
+.padding-top-20{
+    padding-top: 20px;
+    }
+.padding-top-30{
+    padding-top: 30px;
+    }
+.padding-top-100{
+    padding-top: 100px;
+    }
+//Font style
+.bold{
+    font-weight: 900;
+}
+.light{
+    font-weight: 300;
+}
