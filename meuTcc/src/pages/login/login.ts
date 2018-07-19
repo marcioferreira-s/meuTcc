@@ -1,9 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import { trigger, style, animate, transition } from '@angular/animations';
 import {AuthProvider} from '../../providers/auth';
 import {FirebaseProvider} from '../../providers/firebase';
 import { Storage } from '@ionic/storage';
+import { AuthService } from '../../providers/auth-service';
+import { ToastController } from 'ionic-angular';
+import { User } from '../../providers/user';
+import { HomePage } from '../home/home';
+import { NgForm } from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -47,7 +52,8 @@ import { Storage } from '@ionic/storage';
   ]
 })
 export class LoginPage {
-
+  user : User = new User(); 
+  @ViewChild('form') form: NgForm;
   login=true;
   register=false;
   loginForm ={
@@ -65,7 +71,9 @@ export class LoginPage {
     public authProvider:AuthProvider,
     private FirebaseProvider: FirebaseProvider,
     private loadingCtrl: LoadingController,
-    private storage: Storage
+    private storage: Storage,
+    private authService: AuthService,
+    private toastCtrl: ToastController
 ) {
   }
 //Exibir form de Registro
@@ -79,6 +87,7 @@ exibirRegistrar(){
 exibirLogin(){
   this.login=true;
   this.register=false;
+  
 }
 
 //Login
@@ -91,10 +100,13 @@ let uid = res.user.uid;
 
   this.FirebaseProvider.getUser(uid)
   .then((res)=>{
+    
   let data = res.data();
+  console.log(data);
    this.storage.set('usuario',data)
    .then(()=>{
     load.dismiss();
+
     this.navCtrl.setRoot('HomePage');
    })
 
@@ -111,11 +123,7 @@ criarNovaConta(){
   load.present();
   this.authProvider.register(this.registerForm)
   .then((res) => {
-   
-    let uid = res.user.uid;
-
-
-
+    let uid = res.user.uid
     //Organizar dados
     let data = {
       uid: uid,
@@ -140,6 +148,61 @@ criarNovaConta(){
   })
 
 }
+
+signIn(){
+
+  if(this.form.form.valid){
+
+    this.authService.singIn(this.user)
+    .then(()=>{
+      this.navCtrl.setRoot(HomePage);
+    }).catch((error: any) => {
+      let toast = this.toastCtrl.create({ duration: 3000, position: 'bottom' });
+      if (error.code == 'auth/invalid-email') {
+        toast.setMessage('O e-mail digitado não é valido.');
+      } else if (error.code == 'auth/user-disabled') {
+        toast.setMessage('O usuário está desativado.');
+      } else if (error.code == 'auth/user-not-found') {
+        toast.setMessage('O usuário não foi encontrado.');
+      } else if (error.code == 'auth/wrong-password') {
+        toast.setMessage('A senha digitada não é valida.');
+      }
+      toast.present();
+    });
+  }
+}
+criarNovaConta2(){
+  if(this.form.form.valid){
+    console.log("ENTROU");
+    let toast = this.toastCtrl.create({
+      duration:5000,
+      position:'top'});
+      toast.setMessage('teste');
+      toast.present();
+    this.authService.createUser(this.user)
+    .then((user: any)=>{
+      console.log("ENTROU");
+      toast.setMessage('Usuário criado com sucesso');
+      toast.present();
+      user.sendEmailVerification();
+
+      this.navCtrl.setRoot(HomePage);
+    }).catch((error: any) => {
+      if (error.code  == 'auth/email-already-in-use') {
+        toast.setMessage('O e-mail digitado já está em uso.');
+      } else if (error.code  == 'auth/invalid-email') {
+        toast.setMessage('O e-mail digitado não é valido.');
+      } else if (error.code  == 'auth/operation-not-allowed') {
+        toast.setMessage('Não está habilitado criar usuários.');
+      } else if (error.code  == 'auth/weak-password') {
+        toast.setMessage('A senha digitada é muito fraca.');
+      }
+      toast.present();
+    });
+  }
+
+}
+
   ionViewDidLoad() {
     
   }

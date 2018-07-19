@@ -17,24 +17,30 @@
            TITULO
            SUBTITULO
       </div> -->
-
       <!-- FORM -->
+    <form #form="ngForm" novalidate>
       <div class="padding-login">
         <ion-item class="bg-transparent no-padding">
           <ion-label color="red" stacked class="letra bold">E-mail</ion-label>
-          <ion-input type="email" class="letra" [(ngModel)]="loginForm.email"></ion-input>
+          <ion-input type="email" class="letra" name="email" [(ngModel)]="user.email" #email="ngModel" required></ion-input>
         </ion-item>
+
 
         <ion-item class="bg-transparent no-padding">
           <ion-label stacked class="letra bold">Senha</ion-label>
-          <ion-input type="password" class="letra"[(ngModel)]="loginForm.password"></ion-input>
+          <ion-input type="password" class="letra"name="password" [(ngModel)]="user.password" #password="ngModel" required></ion-input>
+
         </ion-item>
+  
 
       </div>
       <!--cta-->
-      <div class="center">
-        <button ion-button class="ctaLogin" (click)="fazerLogin()">Entrar</button>
+      <div class="botaoCadastrar">
+          <button ion-button block class="ctaLogin" [disabled]="!form.form.valid" (click)="signIn()">
+          Entrar
+          </button>
       </div>
+    </form>
      <!--NOVA CONTA-->
       <div class="letra light mg-top20 center"(click)="exibirRegistrar()">
          Quero criar uma conta
@@ -66,31 +72,43 @@
       </div> 
 
       <!-- FORM -->
+    <form #form="ngForm" novalidate>
       <div class="padding-register">
+
         <ion-item class="bg-transparent no-padding mg-top-30">
           <ion-label stacked class="letra bold">Como você se chama?</ion-label>
-          <ion-input type="text" class="gunmetal"[(ngModel)]="registerForm.name"></ion-input>
+          <ion-input type="text" name="nome"class="gunmetal"[(ngModel)]="user.name"#nome="ngModel" required></ion-input>
         </ion-item>
-
         <ion-item class="bg-transparent no-padding mg-top-20">
           <ion-label stacked class="letra bold">Qual é o seu e-mail?</ion-label>
-          <ion-input type="email" class="gunmetal" [(ngModel)]="registerForm.email"></ion-input>
+          <ion-input type="text" class="gunmetal" name="email" [(ngModel)]="user.email" #email="ngModel" required></ion-input>
+          <ion-item *ngIf="email.errors && (email.dirty || email.touched)" class="text-danger">
+            O campo é obrigatório
+          </ion-item>
         </ion-item>
 
         <ion-item class="bg-transparent no-padding">
+          
           <ion-label stacked class="letra bold">Escolha uma senha:</ion-label>
-          <ion-input type="password" class="gunmetal"[(ngModel)]="registerForm.password"></ion-input>
+          <ion-input type="password" class="gunmetal" name="password" [(ngModel)]="user.password" #password="ngModel" required></ion-input>
         </ion-item>
+        <ion-item *ngIf="password.errors && (password.dirty || password.touched)" class="text-danger">
+            O campo é obrigatório
+          </ion-item>
 
       </div>
       <!--cta-->
-      <div class="center">
-        <button ion-button class="ctaLogin" (click)="criarNovaConta()">Cadastrar</button>
+      <div class="botaoCadastrar">
+          <button ion-button block class="ctaLogin" [disabled]="!form.form.valid" (click)="criarNovaConta2()">
+          Cadastrar
+          </button>
       </div>
+    </form>
       <!--Já tenho conta-->
       <div class="letra light mg-top-20 center"(click)="exibirLogin()">
         Já tenho uma conta
       </div>
     </div>
   </div>
+
 </ion-content>

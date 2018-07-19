@@ -15,12 +15,13 @@ import {HomePageModule} from '../pages/home/home.module';
 //Providers 
 import { AuthProvider} from '../providers/auth';
 import { FirebaseProvider} from '../providers/firebase';
-
+import {AuthService} from '../providers/auth-service';
 //Firebase Config
 import { firebaseConfig } from '../config/firebase';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     MyApp
   ],
   providers: [
+    AuthService,
     FirebaseProvider,
     AuthProvider,
     StatusBar,

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {AuthService} from '../../providers/auth-service';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the HomePage page.
@@ -15,7 +17,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams
+    ,private authService: AuthService) {
+  }
+
+  signOut(){
+    this.authService.signOut()
+    .then(()=>{
+      this.navCtrl.setRoot(LoginPage);
+    }).catch((error)=>{
+      console.error(error);
+    });
   }
 
   ionViewDidLoad() {
