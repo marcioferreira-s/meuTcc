@@ -14,15 +14,16 @@ import {LoginPageModule} from '../pages/login/login.module';
 import {HomePageModule} from '../pages/home/home.module';
 //Providers 
 import { AuthProvider} from '../providers/auth';
-import { FirebaseProvider} from '../providers/firebase';
 import {AuthService} from '../providers/auth-service';
 //Firebase Config
 import { firebaseConfig } from '../config/firebase';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
 
 import 'gsap';
+import { ContactProvider } from '../providers/contact/contact';
+import { MedicamentoProvider } from '../providers/medicamento/medicamento';
 
 @NgModule({
   declarations: [
@@ -36,8 +37,8 @@ import 'gsap';
     BrowserModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -47,11 +48,12 @@ import 'gsap';
   ],
   providers: [
     AuthService,
-    FirebaseProvider,
     AuthProvider,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ContactProvider,
+    MedicamentoProvider
   ]
 })
 export class AppModule {}

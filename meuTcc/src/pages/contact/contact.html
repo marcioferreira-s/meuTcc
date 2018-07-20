@@ -1,0 +1,28 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ title }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <form [formGroup]="form">
+      <ion-item>
+        <ion-label stacked>Nome</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+      
+   
+      <ion-item>
+        <ion-label stacked>Telefone</ion-label>
+        <ion-input type="tel" formControlName="tel"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <button ion-button block type="submit"  (click)="onSubmit()">Salvar</button>
+      </div>
+    </form>
+  </ion-content>

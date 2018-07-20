@@ -1,14 +1,11 @@
 import { Component,ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, Events,ToastController } from 'ionic-angular';
 import {AuthService} from '../../providers/auth-service';
 import { LoginPage } from '../login/login';
+//import { ContactPage } from '../contact/contact';
+//import { Observable } from 'rxjs/internal/Observable';
+//import { ContactProvider } from './../../providers/contact/contact';
 
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 declare var TimelineMax: any;
 declare var Back: any;
 @IonicPage()
@@ -23,7 +20,6 @@ export class HomePage {
   @ViewChild('box3') box3;
   @ViewChild('box4') box4;
   @ViewChild('box5') box5;
-
 
   tl: any;
   constructor(public navCtrl: NavController, 
@@ -56,6 +52,13 @@ export class HomePage {
     });
   }
   
+  newContact(){
+    this.navCtrl.push('ContactPage');
+  }
+
+  newMedicamento(){
+    this.navCtrl.push('MedicamentoHomePage');
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');

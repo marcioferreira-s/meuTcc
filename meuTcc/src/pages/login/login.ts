@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import { trigger, style, animate, transition } from '@angular/animations';
 import {AuthProvider} from '../../providers/auth';
-import {FirebaseProvider} from '../../providers/firebase';
 import { Storage } from '@ionic/storage';
 import { AuthService } from '../../providers/auth-service';
 import { ToastController } from 'ionic-angular';
@@ -69,7 +68,6 @@ export class LoginPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public authProvider:AuthProvider,
-    private FirebaseProvider: FirebaseProvider,
     private loadingCtrl: LoadingController,
     private storage: Storage,
     private authService: AuthService,
@@ -88,65 +86,6 @@ exibirLogin(){
   this.login=true;
   this.register=false;
   
-}
-
-//Login
-fazerLogin(){
-  let load = this.loadingCtrl.create();
-  load.present();
-  this.authProvider.login(this.loginForm)
-  .then((res) => {
-let uid = res.user.uid;
-
-  this.FirebaseProvider.getUser(uid)
-  .then((res)=>{
-    
-  let data = res.data();
-  console.log(data);
-   this.storage.set('usuario',data)
-   .then(()=>{
-    load.dismiss();
-
-    this.navCtrl.setRoot('HomePage');
-   })
-
-  })
-
-  }).catch((err)=>{
-    load.dismiss();
-  })
-
-}
-//Registro
-criarNovaConta(){
-  let load = this.loadingCtrl.create();
-  load.present();
-  this.authProvider.register(this.registerForm)
-  .then((res) => {
-    let uid = res.user.uid
-    //Organizar dados
-    let data = {
-      uid: uid,
-      name: this.registerForm.name,
-      email: this.registerForm.email
-    };
-    //Gravar user no firestore
-    this.FirebaseProvider.postUser(data).then(()=>{
-      load.dismiss();
-    
-       this.storage.set('usuario',data)
-       .then(()=>{
-        load.dismiss();
-        this.navCtrl.setRoot('HomePage');
-       })
-    
-    }).catch((err)=>{
-      load.dismiss();
-    })
-  }).catch((err)=>{
-    load.dismiss();
-  })
-
 }
 
 signIn(){
