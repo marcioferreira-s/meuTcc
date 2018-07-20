@@ -1,1 +1,27 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu type="overlay" [content]="content" transparent (ionOpen)="menuOpened()" (ionClose)="menuClosed()">
+    <ion-header>
+      <ion-toolbar no-border transparent>
+        <ion-buttons start>
+          <button #close ion-button icon-only (click)="closeMenu()">
+            <ion-icon name="close"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <svg id="svg" height="100%" width="100%">
+      <circle #svgOverlay id="svg-overlay" cy="40" cx="30" r="10" fill="#2557bf" />
+    </svg>
+  
+    <ion-content>
+      <ion-list #menuItem>
+        <button ion-item *ngFor="let p of pages" (click)="openPage(p)" (click)="closeMenu()">
+          {{p.title}}
+        </button>
+      </ion-list>
+    </ion-content>
+  
+  </ion-menu>
+  
+  <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+  <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+

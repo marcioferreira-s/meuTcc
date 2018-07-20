@@ -173,7 +173,6 @@ signIn(){
 }
 criarNovaConta2(){
   if(this.form.form.valid){
-    console.log("ENTROU");
     let toast = this.toastCtrl.create({
       duration:5000,
       position:'top'});
@@ -181,12 +180,21 @@ criarNovaConta2(){
       toast.present();
     this.authService.createUser(this.user)
     .then((user: any)=>{
-      console.log("ENTROU");
+    
       toast.setMessage('Usuário criado com sucesso');
       toast.present();
-      user.sendEmailVerification();
-
       this.navCtrl.setRoot(HomePage);
+    var user2 =this.authService.currentUser();
+     
+    if (user2 != null) {
+      console.log(user2);
+        
+    user2.sendEmailVerification().then(function() {
+      console.log("Entrou para enviar o email");
+    }).catch(function(error) {
+      console.log(error);
+    });
+    }
     }).catch((error: any) => {
       if (error.code  == 'auth/email-already-in-use') {
         toast.setMessage('O e-mail digitado já está em uso.');

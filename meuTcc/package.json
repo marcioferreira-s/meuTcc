@@ -28,6 +28,7 @@
     "angularfire2": "^5.0.0-rc.11",
     "cordova-sqlite-storage": "^2.3.3",
     "firebase": "^5.2.0",
+    "gsap": "^2.0.1",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
     "rxjs": "^6.2.2",

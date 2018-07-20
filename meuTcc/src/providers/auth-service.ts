@@ -24,4 +24,8 @@ export class AuthService {
     signOut(){
         return this.angularFireAuth.auth.signOut();
     }
+
+    currentUser(){
+        return this.angularFireAuth.auth.currentUser;
+    }
 }

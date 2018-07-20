@@ -1,20 +1,51 @@
-<!--
-  Generated template for the HomePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>home</ion-title>
+<ion-header no-border>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="ios-notifications-outline"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content>
+  <ion-grid no-padding class="services">
+    <ion-row class="services-rows">
+      <ion-col class="services-box" #box1 width-30 (click)="exibirMedicamentos()">
+        <img class="paddingTop" src="assets/imgs/relatorio.png">
+        <span>Minhas Informações</span>
+      </ion-col>
+      <ion-col class="services-box" #box2 width-30 (click)="exibirContato()">
+        <img class="paddingTop" src="assets/imgs/contato.png">
+        <span>Contato Emergencial</span>
+      </ion-col>
+    </ion-row>
+    <ion-row class="services-rows">
+      <ion-col class="services-box" #box3 width-30 (click)="exibirMedicamento()">
+        <img class="paddingTop" src="assets/imgs/medicamento.png">
+        <span>Remedio</span>
+      </ion-col>
+      <ion-col class="services-box" #box4 width-30 (click)="exibirAlergia()">
+        <img class="paddingTop" src="assets/imgs/alergia.png">
+        <span>Alergia</span>
+      </ion-col>
+    </ion-row>
+    <ion-row class="services-rows">
+      <ion-col class="sos" #box5 width-30>
+        <img class="paddingTop" src="assets/imgs/sos.png">
+      </ion-col>
+      
+    </ion-row>
+   
+  </ion-grid>
+</ion-content>
 
-<ion-content padding>
+<!-- 
 <button ion-button block color="primary" (click)="signOut()">
   Sair
-</button>
-</ion-content>
+</button> -->
+
