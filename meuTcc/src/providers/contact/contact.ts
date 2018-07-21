@@ -3,7 +3,7 @@ import {AngularFireDatabase} from 'angularfire2/database';
 
 @Injectable()
 export class ContactProvider {
-  private PATH = 'contacts/'
+  private PATH = 'contato/'
   constructor(private db : AngularFireDatabase) {
    
 
@@ -25,20 +25,21 @@ export class ContactProvider {
     })
   }
 
-  save(contact: any) {
+  save(contato: any) {
     return new Promise((resolve, reject) => {
-      if (contact.key) {
+      if (contato.key) {
         this.db.list(this.PATH)
-          .update(contact.key, { name: contact.name, tel: contact.tel })
+          .update(contato.key, { name: contato.name, tel: contato.tel })
           .then(() => resolve())
           .catch((e) => reject(e));
       } else {
         this.db.list(this.PATH)
-          .push({ name: contact.name, tel: contact.tel })
+          .push({ name: contato.name, tel: contato.tel })
           .then(() => resolve());
       }
     })
   }
+
 
   remove(key:string){
     return this.db.list(this.PATH).remove(key);

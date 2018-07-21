@@ -52,8 +52,8 @@ export class HomePage {
     });
   }
   
-  newContact(){
-    this.navCtrl.push('ContactPage');
+  newContato(){
+    this.navCtrl.push('ContatohomePage');
   }
 
   newMedicamento(){

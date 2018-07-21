@@ -24,6 +24,7 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import 'gsap';
 import { ContactProvider } from '../providers/contact/contact';
 import { MedicamentoProvider } from '../providers/medicamento/medicamento';
+import { AlergiaProvider } from '../providers/alergia/alergia';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { MedicamentoProvider } from '../providers/medicamento/medicamento';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ContactProvider,
-    MedicamentoProvider
+    MedicamentoProvider,
+    AlergiaProvider
   ]
 })
 export class AppModule {}

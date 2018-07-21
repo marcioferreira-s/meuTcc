@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams,ToastController  } from 'ionic-angu
 import {MedicamentoProvider} from './../../providers/medicamento/medicamento';
 import { Observable } from 'rxjs/Observable';
 
-
 @IonicPage()
 @Component({
   selector: 'page-medicamentohome',

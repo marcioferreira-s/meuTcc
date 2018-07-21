@@ -6,6 +6,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 export class MedicamentoProvider {
   private PATH = 'medicamento/';
   
+  
    constructor(private db: AngularFireDatabase) {
    }
   
