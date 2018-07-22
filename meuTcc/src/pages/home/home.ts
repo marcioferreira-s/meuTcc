@@ -40,9 +40,6 @@ export class HomePage {
         });
       }
     
-  
-
-
   signOut(){
     this.authService.signOut()
     .then(()=>{ 
@@ -58,6 +55,9 @@ export class HomePage {
 
   newMedicamento(){
     this.navCtrl.push('MedicamentoHomePage');
+  }
+  newAlergia(){
+    this.navCtrl.push('AlergiahomePage');
   }
 
   ionViewDidLoad() {

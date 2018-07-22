@@ -1,18 +1,35 @@
-<!--
-  Generated template for the AlergiahomePage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>alergiahome</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+    <ion-navbar color="primary">
+      <ion-title>
+        Alergia
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+   
+  <ion-content padding>
+    
+   
+    <ion-list>
+      <ion-item-sliding *ngFor="let alergia of alergias | async">
+        <ion-item>
+          <h1>{{ alergia.name }}</h1>
+          <p>{{ alergia.tipo }}</p>
+        </ion-item>
+        <ion-item-options side="left">
+          <button ion-button color="secondary" (click)="editAlergia(alergia)">
+            <ion-icon name="create"></ion-icon>
+          </button>
+          <button ion-button color="danger" (click)="removeAlergia(alergia.key)">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+   
+    <ion-fab bottom right>
+      <button ion-fab color="primary" (click)="newAlergia()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-fab>
+  </ion-content>

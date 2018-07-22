@@ -15,7 +15,7 @@ export class MedicamentoHomePage {
   constructor(public navCtrl: NavController,
      private provider: MedicamentoProvider,
     private toast: ToastController) {
-
+ 
     this.medicamentos = this.provider.getAll();
   }
 
