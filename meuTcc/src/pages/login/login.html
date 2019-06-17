@@ -32,19 +32,21 @@
 
         </ion-item>
 
+        <!--cta-->
+        <div class="botaoCadastrar">
+          <button ion-button block class="ctaLogin" [disabled]="!form.form.valid" (click)="signIn()">
+           Entrar
+          </button>
+        </div>
+         <!--NOVA CONTA-->
+      <div class="letra light mg-top20 center"(click)="exibirRegistrar()">
+        Quero criar uma conta
+     </div>
 
       </div>
-      <!--cta-->
-      <div class="botaoCadastrar">
-          <button ion-button block class="ctaLogin" [disabled]="!form.form.valid" (click)="signIn()">
-          Entrar
-          </button>
-      </div>
+    
     </form>
-     <!--NOVA CONTA-->
-      <div class="letra light mg-top20 center"(click)="exibirRegistrar()">
-         Quero criar uma conta
-      </div>
+    
     </div>
   </div>
 

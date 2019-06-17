@@ -14,8 +14,8 @@ page-home {
       -webkit-box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
       box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
       margin: 10px;
-      max-width: 150px;
-      min-height: 150px;
+      max-width: 100px;
+      min-height: 100px;
       padding: 20px;
       text-align: center;
   }
@@ -53,7 +53,8 @@ page-home {
   
     .services {
       margin-top: 4%;
-  
+      height: 400px;
+    
       .services-rows {
         justify-content: space-around;
         margin-bottom: 10px;
@@ -64,13 +65,13 @@ page-home {
           border-radius: 5px;
           box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
           margin: 10px;
-          max-width: 150px;
-          min-height: 150px;
+          max-width: 100px;
+          min-height: 100px;
           padding: 20px;
           text-align: center;
   
           img {
-            max-width: 80px;
+            max-width: 50px;
             display: block;
             margin: 0 auto;
             margin-bottom: 10px;
