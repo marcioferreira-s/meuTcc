@@ -5,6 +5,11 @@ import { LoginPage } from '../login/login';
 //import { ContactPage } from '../contact/contact';
 //import { Observable } from 'rxjs/internal/Observable';
 //import { ContactProvider } from './../../providers/contact/contact';
+import { SMS } from '@ionic-native/sms';
+import { CallNumber } from '@ionic-native/call-number';
+import { TextToSpeech } from '@ionic-native/text-to-speech';
+
+
 
 declare var TimelineMax: any;
 declare var Back: any;
@@ -26,7 +31,10 @@ export class HomePage {
     public navParams: NavParams,
     private authService: AuthService,
     public menuCtrl: MenuController,
-    public events: Events
+    public events: Events,
+    private sms: SMS,
+    private callSvc: CallNumber,
+    private tts: TextToSpeech
 
   ) {
     this.tl = new TimelineMax({delay: 1});
@@ -49,6 +57,9 @@ export class HomePage {
     });
   }
   
+  newInfo(){
+    this.navCtrl.push('InfohomePage');
+  }
   newContato(){
     this.navCtrl.push('ContatohomePage');
   }
@@ -59,6 +70,39 @@ export class HomePage {
   newAlergia(){
     this.navCtrl.push('AlergiahomePage');
   }
+
+  senSMS(){
+
+    var options:{
+      replaceLineBreaks:true,
+      android:{
+        intent : 'INTENT'
+      }
+    }
+    this.sms.send('987436097','SOS',options)
+    .then(()=>{
+      this.call();
+    }).catch((err)=>{
+      alert(JSON.stringify(err))
+    });
+  }
+
+
+  fala(){
+    this.tts.speak('Socorro.Minha localização é')
+    .then(() => console.log('Success'))
+    .catch((reason: any) => console.log(reason));
+  }
+  call(){
+    this.callSvc.callNumber('976467301',true)
+    .then(()=>{
+      this.callSvc.isCallSupported
+      this.fala();
+    }).catch((err)=>{
+      alert(JSON.stringify(err))
+    });
+  }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');

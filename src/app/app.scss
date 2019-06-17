@@ -16,7 +16,6 @@
 
 .orange{
     color : $orange;
-    
 }
 .dark{
     color : $dark;
@@ -33,12 +32,6 @@
 //Align
 .center{
     text-align: center;
-}
-
-.botaoCadastrar{
-    text-align: center;
-    padding-right: 40px;
-    padding-left: 40px;
 }
 //Margin
 .no-margin{
@@ -99,52 +92,3 @@ padding: 0px;
 .light{
     font-weight: 300;
 }
-.ios, .md {
-    ion-menu[type=overlay] {
-      .menu-inner {
-        box-shadow: none !important;
-      }
-  
-      .show-backdrop {
-        opacity: 0 !important;
-      }
-  
-    }
-  
-    .menu-inner {
-      background: transparent !important;
-      width: 100%;
-      height: 46vh;
-      visibility: hidden;
-  
-      .toolbar {
-        padding-left: 10px;
-        color: #ffffff;
-  
-        .bar-button {
-          color: #ffffff;
-        }
-      }
-  
-      > ion-content {
-        background-color: transparent;
-  
-        .item {
-          background-color: transparent;
-          border-top: none;
-          color: #ffffff;
-          text-transform: uppercase;
-          font-size: 1.1em;
-  
-          &:last-child {
-            border-bottom: none;
-          }
-  
-          &-inner {
-            border-bottom: none;
-            background-image: none;
-          }
-        }
-      }
-    }
-  }

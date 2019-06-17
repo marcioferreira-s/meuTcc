@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="primary">
+      <ion-title>{{ title }}</ion-title>
+    </ion-navbar>
+  </ion-header>
+   
+  <ion-content padding>
+    <form [formGroup]="form">
+      <ion-item>
+        <ion-label stacked>Nome</ion-label>
+        <ion-input type="text" formControlName="name"></ion-input>
+      </ion-item>
+  
+   
+      <ion-item>
+        <ion-label stacked>Rua</ion-label>
+        <ion-input type="text" formControlName="rua"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+          <ion-label stacked>municipio</ion-label>
+          <ion-input type="text" formControlName="municipio"></ion-input>
+        </ion-item>
+        
+    
+      <div padding>
+        <button ion-button block type="submit"  (click)="onSubmit()">Salvar</button>
+      </div>
+    </form>
+  </ion-content>
+  

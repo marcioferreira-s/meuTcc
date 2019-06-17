@@ -8,32 +8,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Plugins
 import { IonicStorageModule } from '@ionic/storage';
-import { SMS } from '@ionic-native/sms';
-import { CallNumber } from '@ionic-native/call-number';
-import { TextToSpeech } from '@ionic-native/text-to-speech';
-
 
 //Pages
 import {LoginPageModule} from '../pages/login/login.module';
 import {HomePageModule} from '../pages/home/home.module';
 //Providers 
 import { AuthProvider} from '../providers/auth';
-import {AuthService} from '../providers/auth-service';
+import { FirebaseProvider} from '../providers/firebase';
+
 //Firebase Config
 import { firebaseConfig } from '../config/firebase';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import {AngularFireDatabaseModule} from 'angularfire2/database';
-
-import 'gsap';
-import { ContactProvider } from '../providers/contact/contact';
-import { MedicamentoProvider } from '../providers/medicamento/medicamento';
-import { AlergiaProvider } from '../providers/alergia/alergia';
-import { InfoProvider } from '../providers/info/info';
 
 @NgModule({
   declarations: [
     MyApp
+    
   ],
   imports: [
     //Pages
@@ -43,8 +35,8 @@ import { InfoProvider } from '../providers/info/info';
     BrowserModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFireDatabaseModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -53,20 +45,11 @@ import { InfoProvider } from '../providers/info/info';
     MyApp
   ],
   providers: [
-    AuthService,
+    FirebaseProvider,
     AuthProvider,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ContactProvider,
-    MedicamentoProvider,
-    AlergiaProvider,
-    SMS,
-    CallNumber,
-    InfoProvider,
-    TextToSpeech
-    
-    
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}

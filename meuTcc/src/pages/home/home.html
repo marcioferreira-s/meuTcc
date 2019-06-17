@@ -15,8 +15,8 @@
 <ion-content>
   <ion-grid no-padding class="services">
     <ion-row class="services-rows">
-      <ion-col class="services-box" #box1 width-30 (click)="newMedicamento()">
-        <img class="paddingTop" src="assets/imgs/relatorio.png">
+      <ion-col class="services-box" #box1 width-30 (click)="newInfo()">
+        <img class="paddingTop" src="assets/imgs/Relatorio.png">
         <span>Minhas Informações</span>
       </ion-col>
       <ion-col class="services-box" #box2 width-30 (click)="newContato()">
@@ -36,9 +36,10 @@
       </ion-col>
     </ion-row>
     <ion-row class="services-rows">
-      <ion-col class="sos" #box5 width-30>
+      <ion-col class="sos" #box5 width-30 (click)="senSMS()">
         <img class="paddingTop" src="assets/imgs/sos.png">
       </ion-col>
+      
       
     </ion-row>
    

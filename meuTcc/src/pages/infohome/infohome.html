@@ -1,0 +1,43 @@
+
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Minha Informações
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+
+
+<ion-content padding>
+ 
+  <ion-list>
+    <ion-item-sliding *ngFor="let info of infos | async">
+      <ion-item>
+        <h1>{{ info.name }}</h1>
+        <p>{{ info.rua }}</p>
+        <!-- name: info.name, 
+            rua: info.rua,
+            municipio: info.municipio,
+            numero: info.numero,
+            telefone:info.telefone,
+            rg:info.rg,
+            doencas:info.doencas -->
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="secondary" (click)="editInfo(info)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <button ion-button color="danger" (click)="removeInfo(info.key)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+ 
+  <ion-fab bottom right>
+    <button ion-fab color="primary" (click)="newInfo()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
